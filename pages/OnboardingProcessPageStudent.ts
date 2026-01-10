@@ -36,6 +36,7 @@ export class OnboardingProcessPageStudent {
 
     async selectRole() {
         const locator = this.student;
+        await expect.soft(this.page).toHaveScreenshot('printsnapshot-after-check.png', { fullPage: true });
         await expect.soft(locator).toBeVisible();
         await locator.click();
     }

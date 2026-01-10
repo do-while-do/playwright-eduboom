@@ -69,12 +69,14 @@ test.describe('Onboarding process', () => {
         await onboarding.continueWithSelectedClass();
 
         const hasErrors = jsErrors.length > 0 || failedRequests.length > 0;
+        const errors = test.info().errors;
         if (hasErrors) {
             await dashboard.expectUrlNotMatches(dashboard.dashboardURL);
         } else {
             // Checking if we have been redirected to the next page
             expect.soft(jsErrors).toHaveLength(0);
-            expect(failedRequests).toHaveLength(0);
+            expect.soft(failedRequests).toHaveLength(0);
+            expect.soft(errors.length, "There where $(errors.length) soft assertion errors").toBe(0);
             await dashboard.expectUrlMatches(dashboard.dashboardURL);
         }
     });

@@ -3,7 +3,7 @@ import { OnboardingProcessPageStudent } from '../pages/OnboardingProcessPageStud
 import { DashboardPageStudent } from '../pages/DashboardPageStudent';
 
 test.describe('Onboarding process', () => {
-    test.only('Positive scenario - User role selected', async ({ page }) => {
+    test('Positive scenario - User role selected', async ({ page }) => {
 
         const onboarding = new OnboardingProcessPageStudent(page);
         const dashboard = new DashboardPageStudent(page);

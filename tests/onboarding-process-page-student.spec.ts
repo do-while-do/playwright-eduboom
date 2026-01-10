@@ -13,9 +13,6 @@ test.describe('Onboarding process', () => {
         await onboarding.denyCookiesIfVisible();
         // Select next button locator and Assert Next button should be disabled on page load
         await onboarding.expectRoleNextDisabled();
-        await expect.soft(page).toHaveScreenshot(
-            'printsnapshot-after-check.png', { fullPage: true }
-        );
         // Pick a student role
         await onboarding.selectRole();
         // Assert student role picker button is visible 

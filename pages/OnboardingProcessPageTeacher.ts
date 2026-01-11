@@ -13,7 +13,6 @@ export class OnboardingProcessPageTeacher {
     readonly subjectsContainer: string[];
     readonly onboardingTextStep2: string;
     readonly onboardingTextStep3: string;
-    readonly selectedSubjectToContinueOnboarding: string;
 
     constructor(page: Page) {
         this.page = page;
@@ -26,9 +25,8 @@ export class OnboardingProcessPageTeacher {
         this.gradePickerLocator = page.locator('.grade-picker-text');
         this.onboardingTextLocator = page.locator('.onboarding-text');
         this.subjectsContainer = ['Matematyka', 'Język polski', 'Chemia', 'Fizyka', 'Biologia', 'Przyroda'];
-        this.onboardingTextStep2 = 'Witaj w uChase!';
+        this.onboardingTextStep2 = 'Wybierz przedmioty';
         this.onboardingTextStep3 = 'Wybierz klasy';
-        this.selectedSubjectToContinueOnboarding = 'Matematyka';
     }
 
     async goto() {

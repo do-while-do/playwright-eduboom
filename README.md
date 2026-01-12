@@ -4,7 +4,8 @@
 
 ## Notes
 
-- The `part-two-registration` branch contains the registration flow tests, which are prioritized because it's crucial for the business to have non-anonymous users that can be identified by email and later interact with the platform. This is why this specific flow has been chosen for testing.
+- The `page-object-model` branch contains the task from part one with POM that has assertions in the class, `part-two-registration` branch contains POM that has no assertions in the class. I have made two variants because I am not sure what the best practice for this is. There is info about both.
+- The `part-two-registration` branch contains the registration flow tests, which I think need priority because it's crucial for the business to have non-anonymous users that can be identified by email and later interact with the platform. This is why this specific flow has been chosen for testing.
 - I tried using stealth plugins to avoid fingerprinting but did not succeed
 - Some selectors may be dynamic; tests may need updates based on application changes
 - Tests are not perfect and can be improved by deeper analysis of the site's selectors and dynamic elements
@@ -54,7 +55,7 @@ uchase/
    ```
 
 ## Running Tests
-Since there is some sort of fingerprinting on the website or at CloudFront, the tests cannot be run all at once.
+Since there is some sort of fingerprinting on the website or at CloudFront, the tests cannot be run all at once. That is why I have made them all in separate files that can be run one after another for each scenario, so that the process can be started form the beginning every time.
 
 ### Run specific test files
 ```bash

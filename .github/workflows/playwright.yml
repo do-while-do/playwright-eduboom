@@ -33,7 +33,6 @@ jobs:
       # ---------------------------------------------------------
       - name: Student onboarding positive
         run: |
-          npx playwright test dashboard-positive-registration-finish.spec.ts
           npx playwright test onboarding-process-positive-student-role.spec.ts
           npx playwright test dashboard-positive-registration-finish.spec.ts
 

@@ -11,7 +11,8 @@ jobs:
     timeout-minutes: 20
     runs-on: ubuntu-latest
     env:
-      BASE_URL:  ${{ secrets.BASE_URL }}
+      BASE_URL: ${{ secrets.BASE_URL }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -27,13 +28,54 @@ jobs:
           npm ci
           npx playwright install --with-deps
 
-      - name: Run Playwright tests
-        run: npx playwright test --reporter=html
+      # ---------------------------------------------------------
+      # Student onboarding - positive
+      # ---------------------------------------------------------
+      - name: Student onboarding positive
+        run: |
+          npx playwright test onboarding-process-positive-student-role.spec.ts
+          npx playwright test dashboard-positive-registration-finish.spec.ts
 
-      - name: Upload Playwright report   # always upload, even on failures
+      # ---------------------------------------------------------
+      # Student onboarding - negative
+      # ---------------------------------------------------------
+      - name: Student onboarding negative
+        run: |
+          npx playwright test onboarding-process-negative-student-role.spec.ts
+          npx playwright test dashboard-positive-registration-finish.spec.ts
+
+      # ---------------------------------------------------------
+      # Teacher onboarding - positive
+      # ---------------------------------------------------------
+      - name: Teacher onboarding positive
+        run: |
+          npx playwright test onboarding-process-positive-teacher-role.spec.ts
+          npx playwright test dashboard-positive-registration-finish.spec.ts
+
+      # ---------------------------------------------------------
+      # Dashboard registration - positive
+      # ---------------------------------------------------------
+      - name: Dashboard registration positive
+        run: |
+          npx playwright test onboarding-process-positive-student-role.spec.ts
+          npx playwright test dashboard-positive-registration-finish.spec.ts
+
+      # ---------------------------------------------------------
+      # Dashboard registration - negative
+      # ---------------------------------------------------------
+      - name: Dashboard registration negative
+        run: |
+          npx playwright test onboarding-process-positive-student-role.spec.ts
+          npx playwright test dashboard-negative-wrong-email.spec.ts
+          npx playwright test dashboard-negative-long-phone-number.spec.ts
+
+      # ---------------------------------------------------------
+      # Upload report
+      # ---------------------------------------------------------
+      - name: Upload Playwright report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
-          path: playwright-report/
+          path: playwright-report
           retention-days: 30
